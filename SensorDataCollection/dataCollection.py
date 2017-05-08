@@ -15,7 +15,7 @@ from Sensors.Asynchronous.DoorSensor import DoorSensor
 
 def getSensorReading(sensor, verbose, sync=True):
   if sync:
-    r = sensor.getNewReading()   
+    r = sensor.getNewReading()
     if verbose: print("reading for {}: {}".format(sensor.getName(), '(' + ', '.join(format(f, '.2f') for f in r) + ')'))
   else:
     try:
@@ -69,8 +69,9 @@ def logReadingsInDB(sensors, dbl, tstamp):
 
 def initArgs():
   parser = argparse.ArgumentParser(description='Reads from several sensors and logs values into MySQL database.')
-  parser.add_argument('-v', '--verbose', dest='verbose', action='store_true', help='show fetched values in stdout for every iteration')
+  parser.add_argument('-v', '--verbose', dest='verbose', action='store_true', help='show fetched values in stdout for every iteration.')
   parser.add_argument("-i", '--iter-seconds', type=float, default=5.0, help='seconds to wait before a new reading iteration executes.')
+  parser.add_argument("-l", '--location', type=string, default='Georgetown', help='location where the sensors are taking data from. As this project originally started in a Georgetown classroom, the default is "Georgetown".')
 
   args = parser.parse_args()
 
@@ -83,13 +84,15 @@ if __name__ == '__main__':
   verbose = args[0]
   # seconds to sleep after every iteration
   waitTime = args[1]
+  # location to use for database records
+  location = args{2]
   # control variables for sleep time
   end, start = waitTime, 0
 
   # initialize different sensors
   sensors = [THSensor(), CO2Sensor(), BTSensor(), LuxSensor(), NoiseSensor()]
-  # initialize DB Logger
-  dblog = DBLogger()
+  # initialize DB Logger with given location from arguments
+  dblog = DBLogger(location)
 
   try:
     # run asynchronous sensors without waiting for them
@@ -115,7 +118,7 @@ if __name__ == '__main__':
       logReadingsInDB(sensors, dblog, iter_time)
 
       end = timer()
-    
+
       # wait until an aproximation of 'waitTime is met
       while (end - start < waitTime):
         sleep(0.0005)

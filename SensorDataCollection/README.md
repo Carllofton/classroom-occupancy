@@ -19,10 +19,14 @@ Reads from several sensors and logs values into MySQL database.
 
 optional arguments:
   -h, --help            show this help message and exit
-  -v, --verbose         show fetched values in stdout for every iteration
+  -v, --verbose         show fetched values in stdout for every iteration.
   -i ITER_SECONDS, --iter-seconds ITER_SECONDS
                         seconds to wait before a new reading iteration
                         executes.
+  -l LOCATION, --location LOCATION
+                        location where the sensors are taking data from.
+                        As this project originally started in a
+                        Georgetown classroom, the default is "Georgetown"
 ```
 
 # Sensors involved

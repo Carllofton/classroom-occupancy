@@ -3,7 +3,7 @@ import MySQLdb
 from os import sys
 
 class DBLogger:
-  def __init__(self, loc='Georgetown'):
+  def __init__(self, loc='default-location'):
     self.usr = '<user>'
     self.pwd = '<password>'
     self.dbase = '<database>'
