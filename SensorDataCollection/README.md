@@ -1,5 +1,5 @@
 # Sensors Data Collection
-[![python](https://www.python.org/static/favicon.ico)](https://www.python.org/)[![raspi](https://pbs.twimg.com/profile_images/817056871181938688/bZHaUcRZ_normal.jpg)](https://www.raspberrypi.org/)
+[![python](https://www.python.org/static/favicon.ico)](https://www.python.org/)[![raspi](https://ibin.co/3PuPQ0CHv4gy.png)](https://www.raspberrypi.org/)
 
 Small project that takes advantage of python multithreading to log readings from several sensors connected to a Raspberry Pi into a MySQL database.
 This application is part of the ingestion stage for a more complex data analytics project in Georgetown SCS: Classroom Occupancy Prediction, created by:

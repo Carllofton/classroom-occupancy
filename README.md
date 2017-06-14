@@ -1,6 +1,6 @@
 # Data Science Classroom Occupancy Prediction Project
 
-[![gu](https://pbs.twimg.com/profile_images/1899483763/GU_AbbreviatedMark_twitter_normal.png)](http://scs.georgetown.edu/)[![python](https://www.python.org/static/favicon.ico)](https://www.python.org/)[![raspi](https://pbs.twimg.com/profile_images/817056871181938688/bZHaUcRZ_normal.jpg)](https://www.raspberrypi.org/)
+[![gu](https://pbs.twimg.com/profile_images/1899483763/GU_AbbreviatedMark_twitter_normal.png)](http://scs.georgetown.edu/)[![python](https://www.python.org/static/favicon.ico)](https://www.python.org/)[![raspi](https://ibin.co/3PuPQ0CHv4gy.png)](https://www.raspberrypi.org/)
 
 Capstone project for Data Science Certificate Program at Georgetown University - School of Continuing Studies. 
 
