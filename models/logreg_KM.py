@@ -43,9 +43,9 @@ for train_index, test_index in tscv.split(X):
     y_train, y_test = y[train_index], y[test_index]
 
 # Create pipeline to scale the data and tune the model's hyperparameter: pipe
-pipe = make_pipeline(RobustScaler(), LogisticRegression(solver='lbfgs', multi_class='multinomial'))
+pipe = make_pipeline(RobustScaler(), LogisticRegression())
 
-param_grid = {'logisticregression__C': [0.01, 0.1, 1, 10, 100, 110, 120]}
+param_grid = {'logisticregression__C': [0.01, 0.1, 1, 10, 100, 110, 120], 'logisticregression__class_weight':[None, 'balanced']}
 
 grid = GridSearchCV(pipe, param_grid, cv=tscv)
 
