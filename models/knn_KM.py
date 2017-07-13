@@ -37,7 +37,7 @@ X = df.drop('occupancy_level', axis=1).values
 y = df['occupancy_level']
 
 # Use TimeSeriesSplit to create training and test indices
-tscv = TimeSeriesSplit(n_splits=5)
+tscv = TimeSeriesSplit()
 for train_index, test_index in tscv.split(X):
     X_train, X_test = X[train_index], X[test_index]
     y_train, y_test = y[train_index], y[test_index]
