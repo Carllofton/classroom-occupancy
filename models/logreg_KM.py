@@ -8,9 +8,8 @@ import numpy as np
 import pandas as pd
 
 from sklearn.linear_model import LogisticRegression
-from sklearn.pipeline import make_pipeline
 from sklearn.model_selection import GridSearchCV, TimeSeriesSplit
-from sklearn.preprocessing import LabelEncoder, RobustScaler
+from sklearn.preprocessing import LabelEncoder
 
 # Data ingestion
 URL = 'https://raw.githubusercontent.com/georgetown-analytics/classroom-occupancy/master/models/sensor_data_ml.csv'
@@ -43,11 +42,9 @@ for train_index, test_index in tscv.split(X):
     y_train, y_test = y[train_index], y[test_index]
 
 # Create pipeline to scale the data and tune the model's hyperparameter: pipe
-pipe = make_pipeline(RobustScaler(), LogisticRegression())
+param_grid = {'C': [0.01, 0.1, 1, 10, 100, 110, 120], 'class_weight':[None, 'balanced']}
 
-param_grid = {'logisticregression__C': [0.01, 0.1, 1, 10, 100, 110, 120], 'logisticregression__class_weight':[None, 'balanced']}
-
-grid = GridSearchCV(pipe, param_grid, cv=tscv)
+grid = GridSearchCV(LogisticRegression(), param_grid, cv=tscv)
 
 # Fit the pipeline to the training data: logreg_clf
 logreg_clf = grid.fit(X_train, y_train)
