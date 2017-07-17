@@ -7,7 +7,7 @@ import requests
 import numpy as np
 import pandas as pd
 
-from sklearn.pipeline import make_pipeline
+from sklearn.pipeline import Pipeline
 from sklearn.model_selection import GridSearchCV, TimeSeriesSplit
 from sklearn.preprocessing import LabelEncoder, RobustScaler
 from sklearn.svm import SVC
@@ -43,7 +43,7 @@ for train_index, test_index in tscv.split(X):
     y_train, y_test = y[train_index], y[test_index]
 
 # Create pipeline to scale the data and tune the model's hyperparameter: pipe
-pipe = make_pipeline(RobustScaler(), SVC())
+pipe = Pipeline([('scaler', RobustScaler()), ('clf', SVC())])
 
 # Specify the hyperparameter space
 param_range = [0.0001, 0.001, 0.01, 0.1, 1.0, 10.0, 100.0, 1000.00]
@@ -62,4 +62,4 @@ y_pred = svc.predict(X_test)
 svc_model = 'svc_model.sav'
 
 # Save fitted model to disk
-pickle.dump(logreg_clf, open(svc_model, 'wb'))
+pickle.dump(svc, open(svc_model, 'wb'))
